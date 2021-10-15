@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import CreateCharacterScreen from './components/CreateCharacterScreen';
 
 export default function App() {
  
@@ -13,6 +14,7 @@ export default function App() {
         <Stack.Screen name = "Home" component = {HomeScreen}/>
         <Stack.Screen name = "Profile" component = {ProfileScreen}/>
         <Stack.Screen name = "About" component = {AboutScreen}/>
+        <Stack.Screen name = "Create a Character" component = {CharacterScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -56,7 +58,7 @@ function HomeScreen({ navigation }) {
     <Image
         style={styles.image}
         source={{
-          uri: "https://i.guim.co.uk/img/media/14036c4a42194d23db297b025a420fd42cb8a8f8/1697_1399_2327_2327/master/2327.jpg?width=700&quality=85&auto=format&fit=max&s=9421c03963623a06622b81c0e97f8b6a"
+          uri: "https://toppng.com//public/uploads/preview/d20-vector-dungeons-and-dragons-dungeons-dragons-11563505944huesix7rp4.png"
         }}
       />
       
@@ -71,15 +73,27 @@ function HomeScreen({ navigation }) {
           title="About"
           onPress={() => navigation.navigate('About', )}
         />
+        <Button 
+          title="Create a Character"
+          onPress={() => navigation.navigate('Create a Character')}
+        />
       
     </View>
   </View>)
 }
 
+function CharacterScreen({ navigation }) {
+  return (
+    <View style = {{flex:1}}>
+      <CreateCharacterScreen />
+    </View>
+  );
+}
 
 function ProfileScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <SetAlarms />
 
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
@@ -106,17 +120,6 @@ function SettingsScreen({ navigation }) {
 }
 
 const Stack = createStackNavigator();
-
-function MyStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Notifications" component={NotificationsScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="Settings" component={SettingsScreen} />
-    </Stack.Navigator>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
