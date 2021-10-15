@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, ImageBackground } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -31,6 +31,11 @@ function HomeScreen({ navigation }) {
   return (
 
   <View style={styles.container}>
+    {/* <ImageBackground
+      source = {{uri: 'https://media.dnd.wizards.com/styles/media_resources/public/dnd_background_overlay2.jpg'}}
+      resizeMode='cover'
+      style = {styles.image2}
+      > */}
     {/*Title Text*/}
     <View>
       <Text style={styles.titleText}>Welcome to my app!</Text>
@@ -58,7 +63,7 @@ function HomeScreen({ navigation }) {
     <Image
         style={styles.image}
         source={{
-          uri: "https://toppng.com//public/uploads/preview/d20-vector-dungeons-and-dragons-dungeons-dragons-11563505944huesix7rp4.png"
+          uri: "https://gamecows.com/wp-content/uploads/2019/09/DungeonsDragons-Board-Games-Header.jpg"
         }}
       />
       
@@ -79,6 +84,7 @@ function HomeScreen({ navigation }) {
         />
       
     </View>
+  {/* </ImageBackground> */}
   </View>)
 }
 
@@ -93,7 +99,7 @@ function CharacterScreen({ navigation }) {
 function ProfileScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <SetAlarms />
+      
 
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
@@ -124,7 +130,7 @@ const Stack = createStackNavigator();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'lightgreen',
+    backgroundColor: 'lightgoldenrodyellow',
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
@@ -140,11 +146,15 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    width: 200,
+    width: 400,
     height: 200
   },
   navButtonRow: {
     flexDirection: 'row',
     justifyContent: 'space-evenly'
+  },
+  image2: {
+    flex: 1,
+    justifyContent: "center"
   }
 });
