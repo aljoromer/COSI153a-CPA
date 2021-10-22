@@ -105,7 +105,7 @@ const CreateCharacter = ({n}) => {
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'stretch',
-      justifyContent: 'stretch',
+      justifyContent: 'space-around',
       flexDirection:'column',
     },
     textinput:{
