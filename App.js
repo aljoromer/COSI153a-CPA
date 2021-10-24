@@ -4,7 +4,8 @@ import { StyleSheet, Text, View, TextInput, Button, Image, ImageBackground } fro
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import CreateCharacterScreen from './components/CreateCharacterScreen';
+import CreateCharacter from './pages/CreateCharacter';
+import Home from './pages/Home'
 
 export default function App() {
  
@@ -31,67 +32,67 @@ function HomeScreen({ navigation }) {
   return (
 
   <View style={styles.container}>
-    {/* <ImageBackground
-      source = {{uri: 'https://media.dnd.wizards.com/styles/media_resources/public/dnd_background_overlay2.jpg'}}
+    <ImageBackground
+      source = {require('/home/alexromer/COSI153a-CPA/img/dragons.jpg')}
       resizeMode='cover'
       style = {styles.image2}
-      > */}
-    {/*Title Text*/}
-    <View>
-      <Text style={styles.titleText}>Welcome to my app!</Text>
-    </View>
-    {/*Text Input*/}
-    <View>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="Name"
+      >
 
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="Age"
-        keyboardType="numeric"
-      />
-    </View>
+      <Text style={styles.titleText}>Dungeons and Dragons</Text>
+      <Text style={styles.titleText}>Character Creation App</Text>
+ 
 
-    {/*Button + Image */}
-    <View style = {{flexDirection: 'row', alignContent: 'space-between'}}>
-    <Image
-        style={styles.image}
-        source={{
-          uri: "https://gamecows.com/wp-content/uploads/2019/09/DungeonsDragons-Board-Games-Header.jpg"
-        }}
+      <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+          placeholder="Name"
+
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeNumber}
+          value={number}
+          placeholder="Age"
+          keyboardType="numeric"
+        />
+      </View>
+
+      {/*Button + Image */}
+      <View style = {{flexDirection: 'row', alignContent: 'space-between'}}>
+      {/* <Image
+          style={styles.image}
+          source={{
+            uri: "https://gamecows.com/wp-content/uploads/2019/09/DungeonsDragons-Board-Games-Header.jpg"
+          }}
+        /> */}
+        
+      </View>
+    
+      <Button
+        title="Profile"
+        styles = {{borderRadius: 40}}
+        onPress={() => navigation.navigate('Profile', )}
+      />
+      <Button
+        title="About"
+        onPress={() => navigation.navigate('About', )}
+      />
+      <Button 
+        title="Create a Character"
+        onPress={() => navigation.navigate('Create a Character')}
       />
       
-    </View>
-    <View style = {styles.navButtonRow}>
-      <Button
-          title="Profile"
-          styles = {{borderRadius: 40}}
-          onPress={() => navigation.navigate('Profile', )}
-        />
-      <Button
-          title="About"
-          onPress={() => navigation.navigate('About', )}
-        />
-        <Button 
-          title="Create a Character"
-          onPress={() => navigation.navigate('Create a Character')}
-        />
-      
-    </View>
-  {/* </ImageBackground> */}
+    
+  </ImageBackground>
   </View>)
 }
 
 function CharacterScreen({ navigation }) {
   return (
-    <View style = {{flex:1}}>
-      <CreateCharacterScreen />
+    <View style = {{flex:1,padding:20}}>
+      <CreateCharacter />
     </View>
   );
 }
@@ -155,6 +156,9 @@ const styles = StyleSheet.create({
   },
   image2: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "space-around",
+    alignItems:'center',
+
+    width:'100%'
   }
 });
