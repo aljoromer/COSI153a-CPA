@@ -4,8 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Picker} from '@react-native-picker/picker'
 
 
-
-const CreateCharacter = ({n}) => {
+const Characters = ({n}) => {
   const [name,setName] = useState("")
   const [race,setRace] = useState("")
   const [_class,setClass] = useState("")
@@ -17,10 +16,9 @@ const CreateCharacter = ({n}) => {
   const [wis,setWis] = useState("")
   const [char,setChar] = useState("")
   const [selectedCharacter, setSelectedCharacter] = useState('1');
-  const [confirmation,setConfirmation] = useState("")
   const [character,setCharacter] = useState(0)
 
-  useEffect(() => {getData()}
+  useEffect(() => {getData(selectedCharacter)}
            ,[])
 
   const storeData = async (value,selectedCharacter) => {
@@ -67,7 +65,7 @@ const CreateCharacter = ({n}) => {
 
   return (
     <View style = {styles.container}>
-      <View style={{flex:.2}}>
+        <View style={{flex:.5}}>
         <Picker
             selectedValue={selectedCharacter}
             onValueChange={(itemValue, itemIndex) =>
@@ -79,123 +77,58 @@ const CreateCharacter = ({n}) => {
             <Picker.Item label="Character 4" value="4" />
             <Picker.Item label="Character 5" value="5" />
         </Picker>
+        <Button
+            title='LOAD CHARACTER'
+            onPress={() => {getData(selectedCharacter)}}
+        />
         
         </View>
       <View style = {{backgroundColor:'navajowhite', flex: 1, flexDirection:'row',justifyContent:'space-evenly',alignItems:'center'}}>
         <View>
           <Text style={{fontWeight:'bold'}}> Character Name </Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={setName}
-            value={name}
-            placeholder= "Character Name"
-          />
+          <Text>{name}</Text>
         </View>
         <View>
           <Text style={{fontWeight:'bold'}}> Race </Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={setRace}
-            value={race}
-            placeholder = "Race"
-          />
+          <Text>{race}</Text>
         </View>
         <View>
           <Text style={{fontWeight:'bold'}}> Class </Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={setClass}
-            value={_class}
-            placeholder = "Class"
-          />
+          <Text>{_class}</Text>
         </View>
         <View>
           <Text style={{fontWeight:'bold'}}> Level </Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={setLevel}
-            value={level}
-            placeholder = "Level"
-          />
+          <Text>{level}</Text>
         </View>
       </View>
       <View style = {{flex: 3,flexDirection:'row'}}>
         <View style = {{backgroundColor:'lightgrey',flex:1,justifyContent:"space-around",alignItems:'center'}}>
           <View>
             <Text style={{fontWeight:'bold'}}> Strength </Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setStr}
-              value={str}
-              placeholder = "Strength"
-            />
+            <Text>{str}</Text>
           </View>
           <View>
             <Text style={{fontWeight:'bold'}}> Dexterity </Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setDex}
-              value={dex}
-              placeholder = "Dexterity"
-            />
+            <Text>{dex}</Text>
           </View>
           <View>
             <Text style={{fontWeight:'bold'}}> Constitution </Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setCon}
-              value={con}
-              placeholder = "Constitution"
-            />
+            <Text>{con}</Text>
           </View>
           <View>
             <Text style={{fontWeight:'bold'}}> Intelligence </Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setInt}
-              value={int}
-              placeholder = "Intelligence"
-            />
+            <Text>{int}</Text>
           </View>
           <View>
             <Text style={{fontWeight:'bold'}}> Wisdom </Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setWis}
-              value={wis}
-              placeholder = "Wisdom"
-            />
+            <Text>{wis}</Text>
           </View>
           <View>
             <Text style={{fontWeight:'bold'}}> Charisma </Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setChar}
-              value={char}
-              placeholder = "Charisma"
-            />
+            <Text>{char}</Text>
           </View>
         </View>
-        <View style = {{backgroundColor:'indianred',flex:3, justifyContent: 'flex-end',alignItems:'center'}}>
-          <Text>{confirmation}</Text>
-          <Button
-            title = "Create Character!"
-            color = "green"
-            onPress = {()=> {
-              storeData({name,race,_class,level,str,dex,con,int,wis,char},selectedCharacter)
-              setName("")
-              setClass("")
-              setRace("")
-              setLevel("")
-              setStr("")
-              setDex("")
-              setCon("")
-              setInt("")
-              setWis("")
-              setChar("")
-              setConfirmation("Character saved!")
-            }}
-          />
+        <View style = {{backgroundColor:'indianred',flex:3, justifyContent: 'flex-end'}}>
 
         </View>
 
@@ -213,8 +146,9 @@ const CreateCharacter = ({n}) => {
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'stretch',
-      justifyContent: 'space-around',
+      justifyContent: 'center',
       flexDirection:'column',
+      width:'100%'
     },
     textinput:{
       margin:20,
@@ -236,4 +170,4 @@ const CreateCharacter = ({n}) => {
     },
   });
 
-export default CreateCharacter;
+export default Characters;

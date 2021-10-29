@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreateCharacter from './pages/CreateCharacter';
 import Home from './pages/Home'
+import Characters from './pages/Characters'
 
 export default function App() {
  
@@ -13,9 +14,10 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name = "Home" component = {HomeScreen}/>
-        <Stack.Screen name = "Profile" component = {ProfileScreen}/>
-        <Stack.Screen name = "About" component = {AboutScreen}/>
-        <Stack.Screen name = "Create a Character" component = {CharacterScreen}/>
+        {/* <Stack.Screen name = "Profile" component = {ProfileScreen}/>
+        <Stack.Screen name = "About" component = {AboutScreen}/> */}
+        <Stack.Screen name = "Create a Character" component = {CreateCharacterScreen}/>
+        <Stack.Screen name = "Characters" component = {CharactersScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -33,16 +35,17 @@ function HomeScreen({ navigation }) {
 
   <View style={styles.container}>
     <ImageBackground
-      source = {require('/home/alexromer/COSI153a-CPA/img/dragons.jpg')}
+      source = {{uri: 'https://wallpaperaccess.com/full/1578713.jpg'}}
       resizeMode='cover'
       style = {styles.image2}
-      >
+    >
+      <View>
 
       <Text style={styles.titleText}>Dungeons and Dragons</Text>
       <Text style={styles.titleText}>Character Creation App</Text>
- 
+      </View>
 
-      <View>
+      {/* <View>
         <TextInput
           style={styles.input}
           onChangeText={onChangeText}
@@ -57,20 +60,11 @@ function HomeScreen({ navigation }) {
           placeholder="Age"
           keyboardType="numeric"
         />
-      </View>
+      </View> */}
 
       {/*Button + Image */}
-      <View style = {{flexDirection: 'row', alignContent: 'space-between'}}>
-      {/* <Image
-          style={styles.image}
-          source={{
-            uri: "https://gamecows.com/wp-content/uploads/2019/09/DungeonsDragons-Board-Games-Header.jpg"
-          }}
-        /> */}
-        
-      </View>
     
-      <Button
+      {/* <Button
         title="Profile"
         styles = {{borderRadius: 40}}
         onPress={() => navigation.navigate('Profile', )}
@@ -78,10 +72,15 @@ function HomeScreen({ navigation }) {
       <Button
         title="About"
         onPress={() => navigation.navigate('About', )}
-      />
+      /> */}
       <Button 
         title="Create a Character"
         onPress={() => navigation.navigate('Create a Character')}
+      />
+
+      <Button
+        title="Saved Characters"
+        onPress ={() => navigation.navigate('Characters')}
       />
       
     
@@ -89,7 +88,7 @@ function HomeScreen({ navigation }) {
   </View>)
 }
 
-function CharacterScreen({ navigation }) {
+function CreateCharacterScreen({ navigation }) {
   return (
     <View style = {{flex:1,padding:20}}>
       <CreateCharacter />
@@ -97,30 +96,31 @@ function CharacterScreen({ navigation }) {
   );
 }
 
-function ProfileScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+// function ProfileScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       
 
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
+//       <Button title="Go back" onPress={() => navigation.goBack()} />
+//     </View>
+//   );
+// }
 
-function AboutScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-around', marginVertical: 8 }}>
-      <View>
-        <Text style = {{fontSize: 20, fontWeight: 'bold'}}>This app will be an alarm clock. When the alarm goes off, the user will have to solve a math problem, or a puzzle, to turn it off.</Text>
-      </View>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
+// function AboutScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-around', marginVertical: 8 }}>
+//       <View>
+//         <Text style = {{fontSize: 20, fontWeight: 'bold'}}>This app will be an alarm clock. When the alarm goes off, the user will have to solve a math problem, or a puzzle, to turn it off.</Text>
+//       </View>
+//       <Button title="Go back" onPress={() => navigation.goBack()} />
+//     </View>
+//   );
+// }
 
-function SettingsScreen({ navigation }) {
+function CharactersScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Characters />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
