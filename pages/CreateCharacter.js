@@ -23,10 +23,10 @@ const CreateCharacter = ({n}) => {
   useEffect(() => {getData()}
            ,[])
 
-  const storeData = async (value,selectedCharacter) => {
+  const storeData = async (value, selectedCharacter) => {
         try {
           const jsonValue = JSON.stringify(value)
-          await AsyncStorage.setItem(selectedCharacter, jsonValue)
+          await AsyncStorage.setItem(String(selectedCharacter), jsonValue)
         } catch (e) {
           console.dir(e)
         }
@@ -34,7 +34,7 @@ const CreateCharacter = ({n}) => {
 
   const getData = async (selectedCharacter) => {
         try {
-          const jsonValue = await AsyncStorage.getItem(selectedCharacter)
+          const jsonValue = await AsyncStorage.getItem(String(selectedCharacter))
           let data = null
           if (jsonValue!=null) {
             data = JSON.parse(jsonValue)
@@ -122,61 +122,67 @@ const CreateCharacter = ({n}) => {
       <View style = {{flex: 3,flexDirection:'row'}}>
         <View style = {{backgroundColor:'lightgrey',flex:1,justifyContent:"space-around",alignItems:'center'}}>
           <View>
-            <Text style={{fontWeight:'bold'}}> Strength </Text>
+            {/* <Text style={{fontWeight:'bold'}}> Strength </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setStr}
               value={str}
               placeholder = "Strength"
+              keyboardType = "number-pad"
             />
           </View>
           <View>
-            <Text style={{fontWeight:'bold'}}> Dexterity </Text>
+            {/* <Text style={{fontWeight:'bold'}}> Dexterity </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setDex}
               value={dex}
               placeholder = "Dexterity"
+              keyboardType = "number-pad"
             />
           </View>
           <View>
-            <Text style={{fontWeight:'bold'}}> Constitution </Text>
+            {/* <Text style={{fontWeight:'bold'}}> Constitution </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setCon}
               value={con}
               placeholder = "Constitution"
+              keyboardType = "number-pad"
             />
           </View>
           <View>
-            <Text style={{fontWeight:'bold'}}> Intelligence </Text>
+            {/* <Text style={{fontWeight:'bold'}}> Intelligence </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setInt}
               value={int}
               placeholder = "Intelligence"
+              keyboardType = "number-pad"
             />
           </View>
           <View>
-            <Text style={{fontWeight:'bold'}}> Wisdom </Text>
+            {/* <Text style={{fontWeight:'bold'}}> Wisdom </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setWis}
               value={wis}
               placeholder = "Wisdom"
+              keyboardType = "number-pad"
             />
           </View>
           <View>
-            <Text style={{fontWeight:'bold'}}> Charisma </Text>
+            {/* <Text style={{fontWeight:'bold'}}> Charisma </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setChar}
               value={char}
               placeholder = "Charisma"
+              keyboardType = "number-pad"
             />
           </View>
         </View>
-        <View style = {{backgroundColor:'indianred',flex:3, justifyContent: 'flex-end',alignItems:'center'}}>
+        <View style = {{backgroundColor:'indianred',flex:2, justifyContent: 'flex-end',alignItems:'center'}}>
           <Text>{confirmation}</Text>
           <Button
             title = "Create Character!"
