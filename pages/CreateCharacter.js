@@ -20,7 +20,7 @@ const CreateCharacter = ({n}) => {
   const [confirmation,setConfirmation] = useState("")
   const [character,setCharacter] = useState(0)
 
-  useEffect(() => {getData()}
+  useEffect(() => {getData(selectedCharacter)}
            ,[])
 
   const storeData = async (value, selectedCharacter) => {
@@ -71,7 +71,8 @@ const CreateCharacter = ({n}) => {
         <Picker
             selectedValue={selectedCharacter}
             onValueChange={(itemValue, itemIndex) =>
-                setSelectedCharacter(itemValue)
+                {setSelectedCharacter(itemValue),
+                getData(itemValue)} 
             }>
             <Picker.Item label="Character 1" value="1" />
             <Picker.Item label="Character 2" value="2" />
@@ -189,16 +190,16 @@ const CreateCharacter = ({n}) => {
             color = "green"
             onPress = {()=> {
               storeData({name,race,_class,level,str,dex,con,int,wis,char},selectedCharacter)
-              setName("")
-              setClass("")
-              setRace("")
-              setLevel("")
-              setStr("")
-              setDex("")
-              setCon("")
-              setInt("")
-              setWis("")
-              setChar("")
+              // setName("")
+              // setClass("")
+              // setRace("")
+              // setLevel("")
+              // setStr("")
+              // setDex("")
+              // setCon("")
+              // setInt("")
+              // setWis("")
+              // setChar("")
               setConfirmation("Character saved!")
             }}
           />
