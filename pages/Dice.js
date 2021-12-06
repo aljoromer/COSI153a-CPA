@@ -8,13 +8,17 @@ const Dice = () => {
 
     return (
         <View style = {styles.container}>
+            <View style = {{flex:1}}>
+
+            </View>
             <View style={{flex:1}}>
                 <Picker
+                    style={{ height: 50, width: 150 }}
                     selectedValue={d}
                     onValueChange={(itemValue) =>
                         {setD(itemValue)}
                     }>
-                    <Picker.Item label="Selected Value" value=""/>
+                    <Picker.Item label="Select" value=""/>
                     <Picker.Item label="d4" value={4} />
                     <Picker.Item label="d6" value={6} />
                     <Picker.Item label="d8" value={8} />
