@@ -5,8 +5,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreateCharacter from './pages/CreateCharacter';
-import Home from './pages/Home'
 import Characters from './pages/Characters'
+import Dice from './pages/Dice'
 
 export default function App() {
  
@@ -14,10 +14,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name = "Home" component = {HomeScreen}/>
-        {/* <Stack.Screen name = "Profile" component = {ProfileScreen}/>
-        <Stack.Screen name = "About" component = {AboutScreen}/> */}
         <Stack.Screen name = "Create a Character" component = {CreateCharacterScreen}/>
         <Stack.Screen name = "Characters" component = {CharactersScreen}/>
+        <Stack.Screen name = "Dice" component = {DiceScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -28,9 +27,6 @@ export default function App() {
 
 
 function HomeScreen({ navigation }) {
-  const [text, onChangeText] = React.useState(null);
-  const [number, onChangeNumber] = React.useState(null);
-
   return (
 
   <View style={styles.container}>
@@ -44,35 +40,6 @@ function HomeScreen({ navigation }) {
       <Text style={styles.titleText}>Dungeons and Dragons</Text>
       <Text style={styles.titleText}>Character Creation App</Text>
       </View>
-
-      {/* <View>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={text}
-          placeholder="Name"
-
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder="Age"
-          keyboardType="numeric"
-        />
-      </View> */}
-
-      {/*Button + Image */}
-    
-      {/* <Button
-        title="Profile"
-        styles = {{borderRadius: 40}}
-        onPress={() => navigation.navigate('Profile', )}
-      />
-      <Button
-        title="About"
-        onPress={() => navigation.navigate('About', )}
-      /> */}
       <Button 
         title="Create a Character"
         onPress={() => navigation.navigate('Create a Character')}
@@ -82,8 +49,11 @@ function HomeScreen({ navigation }) {
         title="Saved Characters"
         onPress ={() => navigation.navigate('Characters')}
       />
-      
-    
+
+      <Button
+        title="Dice"
+        onPress = {() => navigation.navigate('Dice')}
+      />
   </ImageBackground>
   </View>)
 }
@@ -96,31 +66,19 @@ function CreateCharacterScreen({ navigation }) {
   );
 }
 
-// function ProfileScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      
-
-//       <Button title="Go back" onPress={() => navigation.goBack()} />
-//     </View>
-//   );
-// }
-
-// function AboutScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-around', marginVertical: 8 }}>
-//       <View>
-//         <Text style = {{fontSize: 20, fontWeight: 'bold'}}>This app will be an alarm clock. When the alarm goes off, the user will have to solve a math problem, or a puzzle, to turn it off.</Text>
-//       </View>
-//       <Button title="Go back" onPress={() => navigation.goBack()} />
-//     </View>
-//   );
-// }
-
 function CharactersScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Characters />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+    </View>
+  );
+}
+
+function DiceScreen({navigation}) {
+  return (
+    <View style = {{flex:1}}>
+      <Dice />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
