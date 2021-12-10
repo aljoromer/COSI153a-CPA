@@ -7,6 +7,8 @@ The character creation process is intentionally unrestrictive, so as to allow th
 
 This app was created using react native and the expo platform.
 
-![Screenshot_20211209-210800_Expo Go](https://user-images.githubusercontent.com/79414216/145505443-35be0e1f-eebf-4bf1-8773-1f2a8f16350d.jpg)
-![Screenshot_20211209-210818_Expo Go](https://user-images.githubusercontent.com/79414216/145505445-0167b73d-8750-4307-b2cc-e36fcc03bcb6.jpg)
-![Screenshot_20211209-210826_Expo Go](https://user-images.githubusercontent.com/79414216/145505446-1be5a3a1-6c40-4661-82ca-61e8f7f727bb.jpg)
+![Screenshot_20211209-210826_Expo Go](https://user-images.githubusercontent.com/79414216/145505708-db45b5a2-94f8-4993-8694-31c135ad9ff1.jpg)
+![Screenshot_20211209-210800_Expo Go](https://user-images.githubusercontent.com/79414216/145505703-ddba092b-9081-4b66-887d-daeb999a0b89.jpg)
+![Screenshot_20211209-210818_Expo Go](https://user-images.githubusercontent.com/79414216/145505706-431b5841-2754-4ee5-8a12-fee0a0b5e3b4.jpg)
+
+
