@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Picker} from '@react-native-picker/picker'
+import Dice from './Dice'
 
 
 const Characters = ({n}) => {
@@ -16,6 +17,10 @@ const Characters = ({n}) => {
   const [wis,setWis] = useState("")
   const [char,setChar] = useState("")
   const [selectedCharacter, setSelectedCharacter] = useState('1');
+  const [AC,setAC] = useState("")
+  const [HP,setHP] = useState("")
+  const [hitDice,setHitDice] = useState("")
+  const [currHP,setCurrHP] = useState("")
   const [character,setCharacter] = useState(0)
 
   useEffect(() => {getData(selectedCharacter)}
@@ -46,6 +51,10 @@ const Characters = ({n}) => {
             setInt(data.int)
             setWis(data.wis)
             setChar(data.char)
+            setAC(data.AC)
+            setHP(data.HP)
+            setHitDice(data.hitDice)
+            setAC
           } else {
             // setCorrect(0)
             // setAnswered(0)
@@ -128,10 +137,32 @@ const Characters = ({n}) => {
             <Text>{char}</Text>
           </View>
         </View>
-        <View style = {{backgroundColor:'indianred',flex:3, justifyContent: 'flex-end'}}>
-
+        <View style = {{backgroundColor:'lightblue',flex:1, justifyContent: 'space-around', alignItems:'center'}}>
+          <View>
+            <Text style={{fontWeight:'bold'}}> Armor Class </Text>
+            <Text>{AC}</Text>
+          </View>
+          <View>
+            <Text style={{fontWeight:'bold'}}> Max Hit Points </Text>
+            <Text>{HP}</Text>
+          </View>
+          <View>
+            <TextInput
+              style={styles.input}
+              onChangeText={setCurrHP}
+              value={currHP}
+              placeholder = "Current Hit Points"
+              keyboardType = "number-pad"
+            />
+          </View>
+          <View>
+            <Text style={{fontWeight:'bold'}}> Hit Dice </Text>
+            <Text>{hitDice}</Text>
+          </View>
         </View>
-
+      </View>
+      <View style={{flex:1}}>
+        <Dice/>
       </View>
         
 

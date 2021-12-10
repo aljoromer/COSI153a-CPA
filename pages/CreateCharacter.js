@@ -18,6 +18,9 @@ const CreateCharacter = ({n}) => {
   const [char,setChar] = useState("")
   const [selectedCharacter, setSelectedCharacter] = useState('1');
   const [confirmation,setConfirmation] = useState("")
+  const [AC,setAC] = useState("")
+  const [HP,setHP] = useState("")
+  const [hitDice,setHitDice] = useState("")
   const [character,setCharacter] = useState(0)
 
   useEffect(() => {getData(selectedCharacter)}
@@ -48,6 +51,9 @@ const CreateCharacter = ({n}) => {
             setInt(data.int)
             setWis(data.wis)
             setChar(data.char)
+            setAC(data.AC)
+            setHP(data.HP)
+            setHitDice(data.hitDice)
           } else {
             // setCorrect(0)
             // setAnswered(0)
@@ -121,9 +127,8 @@ const CreateCharacter = ({n}) => {
         </View>
       </View>
       <View style = {{flex: 3,flexDirection:'row'}}>
-        <View style = {{backgroundColor:'lightgrey',flex:1,justifyContent:"space-around",alignItems:'center'}}>
+        <View style = {{backgroundColor:'lightgrey',flex:2,justifyContent:"space-around",alignItems:'center'}}>
           <View>
-            {/* <Text style={{fontWeight:'bold'}}> Strength </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setStr}
@@ -133,7 +138,6 @@ const CreateCharacter = ({n}) => {
             />
           </View>
           <View>
-            {/* <Text style={{fontWeight:'bold'}}> Dexterity </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setDex}
@@ -143,7 +147,6 @@ const CreateCharacter = ({n}) => {
             />
           </View>
           <View>
-            {/* <Text style={{fontWeight:'bold'}}> Constitution </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setCon}
@@ -153,7 +156,6 @@ const CreateCharacter = ({n}) => {
             />
           </View>
           <View>
-            {/* <Text style={{fontWeight:'bold'}}> Intelligence </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setInt}
@@ -163,7 +165,6 @@ const CreateCharacter = ({n}) => {
             />
           </View>
           <View>
-            {/* <Text style={{fontWeight:'bold'}}> Wisdom </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setWis}
@@ -173,7 +174,6 @@ const CreateCharacter = ({n}) => {
             />
           </View>
           <View>
-            {/* <Text style={{fontWeight:'bold'}}> Charisma </Text> */}
             <TextInput
               style={styles.input}
               onChangeText={setChar}
@@ -183,31 +183,49 @@ const CreateCharacter = ({n}) => {
             />
           </View>
         </View>
-        <View style = {{backgroundColor:'indianred',flex:2, justifyContent: 'flex-end',alignItems:'center'}}>
-          <Text>{confirmation}</Text>
-          <Button
-            title = "Create Character!"
-            color = "green"
-            onPress = {()=> {
-              storeData({name,race,_class,level,str,dex,con,int,wis,char},selectedCharacter)
-              // setName("")
-              // setClass("")
-              // setRace("")
-              // setLevel("")
-              // setStr("")
-              // setDex("")
-              // setCon("")
-              // setInt("")
-              // setWis("")
-              // setChar("")
-              setConfirmation("Character saved!")
-            }}
-          />
+        <View style = {{backgroundColor:'lightblue',flex:2, justifyContent: 'space-around',alignItems:'center'}}>
+          <View>
+            <TextInput
+              style={styles.input}
+              onChangeText={setAC}
+              value={AC}
+              placeholder = "Armor Class"
+              keyboardType = "number-pad"
+            />
+          </View>
+          <View>
+            <TextInput
+              style={styles.input}
+              onChangeText={setHP}
+              value={HP}
+              placeholder = "Hit Points"
+              keyboardType = "number-pad"
+            />
+          </View>
+          <View>
+            <TextInput
+              style={styles.input}
+              onChangeText={setHitDice}
+              value={hitDice}
+              placeholder = "Hit Dice"
+            />
+          </View>
+          
 
         </View>
 
       </View>
-        
+      <View>
+      <Text>{confirmation}</Text>
+          <Button
+            title = "Create Character!"
+            color = "green"
+            onPress = {()=> {
+              storeData({name,race,_class,level,str,dex,con,int,wis,char,AC,HP,hitDice},selectedCharacter)
+              setConfirmation("Character saved!")
+            }}
+          />
+      </View>
 
 
     </View>
@@ -240,6 +258,8 @@ const CreateCharacter = ({n}) => {
       margin: 12,
       borderWidth: 1,
       padding: 10,
+      backgroundColor:'white',
+      alignContent:'center'
     },
   });
 

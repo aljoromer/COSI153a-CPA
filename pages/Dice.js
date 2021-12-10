@@ -8,12 +8,10 @@ const Dice = () => {
 
     return (
         <View style = {styles.container}>
-            <View style = {{flex:1}}>
-
-            </View>
-            <View style={{flex:1}}>
+            
+            <View style={{flex:1, alignItems:'center'}}>
                 <Picker
-                    style={{ height: 50, width: 150 }}
+                    style={{ height: 50, width: 100 }}
                     selectedValue={d}
                     onValueChange={(itemValue) =>
                         {setD(itemValue)}
@@ -27,20 +25,20 @@ const Dice = () => {
                     <Picker.Item label="d20" value={20} />
                     <Picker.Item label="d100" value={100} />
                 </Picker>
-            </View>
-            <View style={{flex:4}}>
-                <Button 
-                    title="Roll!"
-                    onPress = {() => {
-                        setRoll(rollDice(d))
-                    }}
-                />
-                <Text>
-                    {roll}
-                </Text>
+            
         
-
+                    <Button 
+                        title="Roll!"
+                        onPress = {() => {
+                            setRoll(rollDice(d))
+                        }}
+                    />
+                    <Text style={styles.diceroll}>
+                        {roll}
+                    </Text>
             </View>
+
+            
         </View>
     )
 }
@@ -55,7 +53,12 @@ const styles = StyleSheet.create({
       backgroundColor: 'lightgoldenrodyellow',
       alignItems: 'center',
       justifyContent: 'space-evenly',
+      flexDirection: 'row'
     },
+    diceroll: {
+        fontSize: 24,
+        fontWeight: 'bold'
+    }
 })
 
 export default Dice;
